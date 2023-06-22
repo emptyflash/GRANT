@@ -2,6 +2,7 @@ package com.logosstudios.GRANT;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.File;
 
 import javax.imageio.ImageIO;
 
@@ -23,10 +24,6 @@ public class Final extends Level {
 
 	@Override
 	public void draw() {
-		if(num == 10)
-		{
-			game.nextLevel();
-		}
 		if(num!=1)
 		{
 			try {
@@ -36,10 +33,18 @@ public class Final extends Level {
 				e1.printStackTrace();
 			}
 		}
+        if (num == 10) {
+            System.exit(0);
+        }
 		Image image = null;
 		try
 		{
-			image = ImageIO.read(Player.class.getResource("end" + num + ".png"));
+            if(num == 9)
+            {
+                image = ImageIO.read(new File("res/images/credits.png"));
+            } else {
+                image = ImageIO.read(new File("res/images/end" + num + ".png"));
+            }
 		}
 		catch (Exception e){e.printStackTrace();}
 		graphics.drawImage(image, 0, 0, 640, 480, game);

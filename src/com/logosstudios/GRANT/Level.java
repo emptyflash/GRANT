@@ -254,7 +254,7 @@ public class Level {
 				disappear.off();
 			if((player.getX()+64>door.getX()&&player.getX()<door.getX()+door.getWidth()) && (player.getY()+64>door.getY() && player.getY() < door.getY()+door.getHeight()))
 			{
-				nextLevel();
+				this.game.nextLevel();
 			}
 		}
 		else
@@ -264,10 +264,13 @@ public class Level {
 					disappear.on();
 		}
 	}
-	public void nextLevel()
+	public Level nextLevel()
 	{
 		changingLevel = true;
 		level++;
+        if (level == levels.size()) {
+            return new Final(this.player, this.graphics, this.game);
+        }
 		beams = new ArrayList<Beam>();
 		entities = new ArrayList<ArrayList<Entity>>();
 		walls = new ArrayList<Wall>();
@@ -282,6 +285,7 @@ public class Level {
 		*/
 		load();
 		changingLevel = false;
+        return this;
 	}
 	public boolean hitTest(Entity a, Entity b)
 	{

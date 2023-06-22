@@ -123,7 +123,7 @@ public class TractorBeam extends Applet implements Runnable, KeyListener, MouseL
 	}
 	public void nextLevel()
 	{
-		level.nextLevel();
+		this.level = level.nextLevel();
 	}
 	public void keyPressed(KeyEvent e)
 	{
