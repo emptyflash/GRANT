@@ -58,42 +58,34 @@ public class Beam extends Component implements Entity {
 		if(angle <= 3*-snapAngle + offset)
 		{
 			current = upLeft;
-			//System.out.println("-3");
 		}
 		else if(angle <= 2*-snapAngle + offset)
 		{
 			current = up;
-			//System.out.println("-2");
 		}
 		else if(angle <= -snapAngle + offset)
 		{
 			current = upRight;
-			//System.out.println("-1");
 		}
 		else if(angle <= 0 + offset)
 		{
 			current = right;
-			//System.out.println("0");
 		}
 		else if(angle <= snapAngle + offset)
 		{
 			current = downRight;
-			//System.out.println("1");
 		}
 		else if(angle <= 2*snapAngle + offset)
 		{
 			current = down;
-			//System.out.println("2");
 		}
 		else if(angle <= 3*snapAngle + offset)
 		{
 			current = downLeft;
-			//System.out.println("3");
 		}
 		else if(angle <= 4*snapAngle + offset)
 		{
 			current = left;
-			//System.out.println("4");
 		}
 		width = current.getWidth(null);
 		height = current.getHeight(null);
@@ -202,42 +194,34 @@ public class Beam extends Component implements Entity {
 		if(angle <= 3*-snapAngle + offset)
 		{
 			current = upLeft;
-			//System.out.println("-3");
 		}
 		else if(angle <= 2*-snapAngle + offset)
 		{
 			current = up;
-			//System.out.println("-2");
 		}
 		else if(angle <= -snapAngle + offset)
 		{
 			current = upRight;
-			//System.out.println("-1");
 		}
 		else if(angle <= 0 + offset)
 		{
 			current = right;
-			//System.out.println("0");
 		}
 		else if(angle <= snapAngle + offset)
 		{
 			current = downRight;
-			//System.out.println("1");
 		}
 		else if(angle <= 2*snapAngle + offset)
 		{
 			current = down;
-			//System.out.println("2");
 		}
 		else if(angle <= 3*snapAngle + offset)
 		{
 			current = downLeft;
-			//System.out.println("3");
 		}
 		else if(angle <= 4*snapAngle + offset)
 		{
 			current = left;
-			//System.out.println("4");
 		}
 		width = current.getWidth(null);
 		height = current.getHeight(null);

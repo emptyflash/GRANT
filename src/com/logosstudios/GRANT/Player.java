@@ -57,49 +57,41 @@ public class Player extends Component implements Entity{
 		{
 			current = upLeft;
 			angle = 3*-snapAngle;
-			System.out.println("-3");
 		}
 		else if(angle <= 2*-snapAngle + offset)
 		{
 			current = up;
 			angle = 2*-snapAngle;
-			System.out.println("-2");
 		}
 		else if(angle <= -snapAngle + offset)
 		{
 			current = upRight;
 			angle = -snapAngle;
-			System.out.println("-1");
 		}
 		else if(angle <= 0 + offset)
 		{
 			current = right;
 			angle = 0;
-			System.out.println("0");
 		}
 		else if(angle <= snapAngle + offset)
 		{
 			current = downRight;
 			angle = snapAngle;
-			System.out.println("1");
 		}
 		else if(angle <= 2*snapAngle + offset)
 		{
 			current = down;
 			angle = 2*snapAngle;
-			System.out.println("2");
 		}
 		else if(angle <= 3*snapAngle + offset)
 		{
 			current = downLeft;
 			angle = 3*snapAngle;
-			System.out.println("3");
 		}
 		else if(angle <= 4*snapAngle + offset)
 		{
 			current = left;
 			angle = 4*snapAngle;
-			System.out.println("4");
 		}
 		
 		if(rightBool)

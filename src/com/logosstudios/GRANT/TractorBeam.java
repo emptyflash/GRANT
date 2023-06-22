@@ -164,11 +164,6 @@ public class TractorBeam extends Applet implements Runnable, KeyListener, MouseL
 		{
 			restart();
 		}
-		if(keyCode == KeyEvent.VK_U)
-		{
-			System.out.println(player.getMouseX());
-			System.out.println(player.getMouseY());
-		}
 		if(keyCode == KeyEvent.VK_ESCAPE)
 		{
 			System.exit(0);

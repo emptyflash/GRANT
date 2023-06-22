@@ -5,7 +5,7 @@ import java.awt.Image;
 
 import javax.imageio.ImageIO;
 
-public class Final implements Level {
+public class Final extends Level {
 	private Graphics2D graphics;
 	private Player player;
 	private TractorBeam game;
@@ -13,6 +13,7 @@ public class Final implements Level {
 	
 	public Final(Player p, Graphics2D g, TractorBeam b)
 	{
+        super(p, g, b);
 		player = p;
 		graphics = g;
 		game = b;
