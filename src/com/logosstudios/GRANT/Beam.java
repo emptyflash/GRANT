@@ -28,28 +28,28 @@ public class Beam extends Component implements Entity {
 		{
 			try
 			{
-				up = ImageIO.read(new File("res/images/pushBeamUp.png"));
-				upLeft = ImageIO.read(new File("res/images/pushBeamUpLeft.png"));
-				left = ImageIO.read(new File("res/images/pushBeamLeft.png"));
-				downLeft = ImageIO.read(new File("res/images/pushBeamDownLeft.png"));
-				down = ImageIO.read(new File("res/images/pushBeamDown.png"));
-				downRight = ImageIO.read(new File("res/images/pushBeamDownRight.png"));
-				right = ImageIO.read(new File("res/images/pushBeamRight.png"));
-				upRight = ImageIO.read(new File("res/images/pushBeamUpRight.png"));
+				up = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamUp.png"));
+				upLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamUpLeft.png"));
+				left = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamLeft.png"));
+				downLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamDownLeft.png"));
+				down = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamDown.png"));
+				downRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamDownRight.png"));
+				right = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamRight.png"));
+				upRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamUpRight.png"));
 			}catch (Exception e){e.printStackTrace();}
 		}
 		else
 		{
 			try
 			{
-				up = ImageIO.read(new File("res/images/pullBeamUp.png"));
-				upLeft = ImageIO.read(new File("res/images/pullBeamUpLeft.png"));
-				left = ImageIO.read(new File("res/images/pullBeamLeft.png"));
-				downLeft = ImageIO.read(new File("res/images/pullBeamDownLeft.png"));
-				down = ImageIO.read(new File("res/images/pullBeamDown.png"));
-				downRight = ImageIO.read(new File("res/images/pullBeamDownRight.png"));
-				right = ImageIO.read(new File("res/images/pullBeamRight.png"));
-				upRight = ImageIO.read(new File("res/images/pullBeamUpRight.png"));
+				up = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamUp.png"));
+				upLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamUpLeft.png"));
+				left = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamLeft.png"));
+				downLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamDownLeft.png"));
+				down = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamDown.png"));
+				downRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamDownRight.png"));
+				right = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamRight.png"));
+				upRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamUpRight.png"));
 			}catch (Exception e){e.printStackTrace();}
 		}
 		

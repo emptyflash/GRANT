@@ -41,9 +41,9 @@ public class Final extends Level {
 		{
             if(num == 9)
             {
-                image = ImageIO.read(new File("res/images/credits.png"));
+                image = ImageIO.read(getClass().getResourceAsStream("res/images/credits.png"));
             } else {
-                image = ImageIO.read(new File("res/images/end" + num + ".png"));
+                image = ImageIO.read(getClass().getResourceAsStream("res/images/end" + num + ".png"));
             }
 		}
 		catch (Exception e){e.printStackTrace();}
