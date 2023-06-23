@@ -52,8 +52,8 @@ public class TractorBeam extends Applet implements Runnable, KeyListener, MouseL
 		}
 		try
 		{
-			titleScreen = ImageIO.read(new File("res/images/titleScreen.png"));
-			splashScreen = ImageIO.read(new File("res/images/splashScreen.png"));
+			titleScreen = ImageIO.read(getClass().getResourceAsStream("/res/images/titleScreen.png"));
+			splashScreen = ImageIO.read(getClass().getResourceAsStream("/res/images/splashScreen.png"));
 		}
 		catch (Exception e){e.printStackTrace();}
 		running = true;

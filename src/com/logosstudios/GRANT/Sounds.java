@@ -13,11 +13,11 @@ public class Sounds
 	public Sounds()
 	{
 		TinySound.init();
-		doorOpen = TinySound.loadSound(new File("res/music/doorOpen.wav"));
-		doorClose = TinySound.loadSound(new File("res/music/doorClose.wav"));
-		pullStart = TinySound.loadSound(new File("res/music/pullRay.wav"));
-		pushStart = TinySound.loadSound(new File("res/music/pushRay.wav"));
-		background = TinySound.loadMusic(new File("res/music/backgroundMusic.wav"));
+		doorOpen = TinySound.loadSound(getClass().getResource("/res/music/doorOpen.wav"));
+		doorClose = TinySound.loadSound(getClass().getResource("/res/music/doorClose.wav"));
+		pullStart = TinySound.loadSound(getClass().getResource("/res/music/pullRay.wav"));
+		pushStart = TinySound.loadSound(getClass().getResource("/res/music/pushRay.wav"));
+		background = TinySound.loadMusic(getClass().getResource("/res/music/backgroundMusic.wav"));
 	}
 	public void startBackgroundMusic()
 	{

@@ -30,14 +30,14 @@ public class Player extends Component implements Entity{
 		graphics = g;
 		try
 		{
-			up = ImageIO.read(new File("res/images/playerUp.png"));
-			upLeft = ImageIO.read(new File("res/images/playerUpLeft.png"));
-			left = ImageIO.read(new File("res/images/playerLeft.png"));
-			downLeft = ImageIO.read(new File("res/images/playerDownLeft.png"));
-			down = ImageIO.read(new File("res/images/playerDown.png"));
-			downRight = ImageIO.read(new File("res/images/playerDownRight.png"));
-			right = ImageIO.read(new File("res/images/playerRight.png"));
-			upRight = ImageIO.read(new File("res/images/playerUpRight.png"));
+			up = ImageIO.read(getClass().getResourceAsStream("/res/images/playerUp.png"));
+			upLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/playerUpLeft.png"));
+			left = ImageIO.read(getClass().getResourceAsStream("/res/images/playerLeft.png"));
+			downLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/playerDownLeft.png"));
+			down = ImageIO.read(getClass().getResourceAsStream("/res/images/playerDown.png"));
+			downRight = ImageIO.read(getClass().getResourceAsStream("/res/images/playerDownRight.png"));
+			right = ImageIO.read(getClass().getResourceAsStream("/res/images/playerRight.png"));
+			upRight = ImageIO.read(getClass().getResourceAsStream("/res/images/playerUpRight.png"));
 		}
 		catch (Exception e){e.printStackTrace();}
 	}

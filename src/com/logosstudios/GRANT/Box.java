@@ -26,7 +26,7 @@ public class Box extends Component implements Entity {
 		height = 50;
 		try
 		{
-			box = ImageIO.read(new File("res/images/box.png"));
+			box = ImageIO.read(getClass().getResourceAsStream("/res/images/box.png"));
 		}
 		catch (Exception e){e.printStackTrace();}
 	}

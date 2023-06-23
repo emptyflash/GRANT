@@ -27,8 +27,8 @@ public class Button extends Component implements Entity {
 		activated = false;
 		try
 		{
-			red = ImageIO.read(new File("res/images/buttonRed.png"));
-			green = ImageIO.read(new File("res/images/buttonGreen.png"));
+			red = ImageIO.read(getClass().getResourceAsStream("/res/images/buttonRed.png"));
+			green = ImageIO.read(getClass().getResourceAsStream("/res/images/buttonGreen.png"));
 			current = red;
 		}
 		catch (Exception e){e.printStackTrace();}

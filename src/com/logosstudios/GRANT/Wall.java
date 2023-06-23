@@ -31,8 +31,8 @@ public class Wall extends Component implements Entity{
 		{
 			try
 			{
-				pattern = ImageIO.read(new File("res/images/wallPatternSolid.png"));
-				border = ImageIO.read(new File("res/images/wallBorder.png"));
+				pattern = ImageIO.read(getClass().getResourceAsStream("/res/images/wallPatternSolid.png"));
+				border = ImageIO.read(getClass().getResourceAsStream("/res/images/wallBorder.png"));
 			}
 			catch (Exception e){e.printStackTrace();}
 			
@@ -41,8 +41,8 @@ public class Wall extends Component implements Entity{
 		{
 			try
 			{
-				pattern = ImageIO.read(new File("res/images/wallPattern.png"));
-				border = ImageIO.read(new File("res/images/wallBorder.png"));
+				pattern = ImageIO.read(getClass().getResourceAsStream("/res/images/wallPattern.png"));
+				border = ImageIO.read(getClass().getResourceAsStream("/res/images/wallBorder.png"));
 			}
 			catch (Exception e){e.printStackTrace();}
 		}

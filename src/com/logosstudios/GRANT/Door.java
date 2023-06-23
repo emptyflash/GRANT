@@ -26,13 +26,13 @@ public class Door extends Component implements Entity {
 		{
 			if(!flipped)
 			{
-				open = ImageIO.read(new File("res/images/doorOpen.png"));
-				close = ImageIO.read(new File("res/images/doorClose.png"));
+				open = ImageIO.read(getClass().getResourceAsStream("/res/images/doorOpen.png"));
+				close = ImageIO.read(getClass().getResourceAsStream("/res/images/doorClose.png"));
 			}
 			else
 			{
-				open = ImageIO.read(new File("res/images/doorOpenFlipped.png"));
-				close = ImageIO.read(new File("res/images/doorCloseFlipped.png"));
+				open = ImageIO.read(getClass().getResourceAsStream("/res/images/doorOpenFlipped.png"));
+				close = ImageIO.read(getClass().getResourceAsStream("/res/images/doorCloseFlipped.png"));
 			}
 			current = close;
 		}

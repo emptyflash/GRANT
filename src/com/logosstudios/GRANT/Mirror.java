@@ -29,7 +29,7 @@ public class Mirror extends Component implements Entity {
 		beams = b;
 		try
 		{
-			image = ImageIO.read(new File("res/images/mirror" + direction + ".png"));
+			image = ImageIO.read(getClass().getResourceAsStream("/res/images/mirror" + direction + ".png"));
 		}
 		catch (Exception e){e.printStackTrace();}
 	}

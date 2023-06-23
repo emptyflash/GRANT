@@ -60,8 +60,8 @@ public class Level {
 		for(int i = 1; i < 8; i++)
 		{
 			try {
-				levels.add(ImageIO.read(new File("res/images/level"+i+".png")));
-				//levels.add(ImageIO.read(new File("level"+i+".png")));
+				levels.add(ImageIO.read(getClass().getResourceAsStream("/res/images/level"+i+".png")));
+				//levels.add(ImageIO.read(getClass().getResourceAsStream("/level"+i+".png")));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -69,9 +69,9 @@ public class Level {
 		load();
 		try
 		{
-			background = ImageIO.read(new File("res/images/background2.png"));
-			splash = ImageIO.read(new File("res/images/black-wellMiniSplash.png"));
-			instructions = ImageIO.read(new File("res/images/instructions.png"));
+			background = ImageIO.read(getClass().getResourceAsStream("/res/images/background2.png"));
+			splash = ImageIO.read(getClass().getResourceAsStream("/res/images/black-wellMiniSplash.png"));
+			instructions = ImageIO.read(getClass().getResourceAsStream("/res/images/instructions.png"));
 		}
 		catch (Exception e){e.printStackTrace();}
 	}
