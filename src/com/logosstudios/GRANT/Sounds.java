@@ -21,7 +21,7 @@ public class Sounds
 	}
 	public void startBackgroundMusic()
 	{
-		background.play(true);
+		//background.play(true);
 	}
 	public void playDoorOpen()
 	{
