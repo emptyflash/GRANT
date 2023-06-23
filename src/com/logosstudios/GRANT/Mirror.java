@@ -37,7 +37,7 @@ public class Mirror extends Component implements Entity {
 	{
 		graphics.drawImage(image, (int)x, (int)y, this);
 	}
-	public void logic() 
+	public void logic(long delta) 
 	{
 		
 	}

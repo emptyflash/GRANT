@@ -22,8 +22,8 @@ public class Switch extends Component implements Entity {
 		onBool = false;
 		try
 		{
-			on = ImageIO.read(new File("res/images/switchEngaged.png"));
-			off = ImageIO.read(new File("res/images/switchDisengaged.png"));
+			on = ImageIO.read(getClass().getResourceAsStream("/res/images/switchEngaged.png"));
+			off = ImageIO.read(getClass().getResourceAsStream("/res/images/switchDisengaged.png"));
 			current = off;
 		}
 		catch (Exception e){e.printStackTrace();}
@@ -36,7 +36,7 @@ public class Switch extends Component implements Entity {
 	}
 
 	@Override
-	public void logic() {
+	public void logic(long delta) {
 		
 	}
 	public void on()

@@ -40,7 +40,7 @@ public class Button extends Component implements Entity {
 	}
 
 	@Override
-	public void logic() {
+	public void logic(long delta) {
 		int num = 0;
 		for(int i = 0; i < boxes.size(); i++)
 		{

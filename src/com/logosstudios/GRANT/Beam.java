@@ -12,92 +12,55 @@ public class Beam extends Component implements Entity {
 	private float x, y, angle, speed, width, height;
 	private boolean push;
 	private Graphics2D graphics;
-	private Image up, upLeft, left, downLeft, down, downRight, right, upRight, current;
+	private static Image pushUp, pushUpLeft, pushLeft, pushDownLeft, pushDown, pushDownRight, pushRight, pushUpRight;
+	private static Image pullUp, pullUpLeft, pullLeft, pullDownLeft, pullDown, pullDownRight, pullRight, pullUpRight;
+    private Image current;
+    private String direction;
 	private int lastId;
+
+    static {
+        try
+        {
+            pushUp = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamUp.png"));
+            pushUpLeft = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamUpLeft.png"));
+            pushLeft = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamLeft.png"));
+            pushDownLeft = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamDownLeft.png"));
+            pushDown = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamDown.png"));
+            pushDownRight = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamDownRight.png"));
+            pushRight = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamRight.png"));
+            pushUpRight = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pushBeamUpRight.png"));
+
+
+            pullUp = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamUp.png"));
+            pullUpLeft = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamUpLeft.png"));
+            pullLeft = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamLeft.png"));
+            pullDownLeft = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamDownLeft.png"));
+            pullDown = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamDown.png"));
+            pullDownRight = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamDownRight.png"));
+            pullRight = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamRight.png"));
+            pullUpRight = ImageIO.read(Beam.class.getResourceAsStream("/res/images/pullBeamUpRight.png"));
+        } catch (Exception e){e.printStackTrace();}
+    }
 	
 	public Beam(float x, float y, float angle, boolean push, Graphics2D g)
 	{
 		this.x = x;
 		this.y = y;
-		this.angle = angle;
 		this.push = push;
-		speed = 6;
+		speed = 3;
 		graphics = g;
 		lastId = -1;
-		if(push)
-		{
-			try
-			{
-				up = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamUp.png"));
-				upLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamUpLeft.png"));
-				left = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamLeft.png"));
-				downLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamDownLeft.png"));
-				down = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamDown.png"));
-				downRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamDownRight.png"));
-				right = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamRight.png"));
-				upRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pushBeamUpRight.png"));
-			}catch (Exception e){e.printStackTrace();}
-		}
-		else
-		{
-			try
-			{
-				up = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamUp.png"));
-				upLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamUpLeft.png"));
-				left = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamLeft.png"));
-				downLeft = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamDownLeft.png"));
-				down = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamDown.png"));
-				downRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamDownRight.png"));
-				right = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamRight.png"));
-				upRight = ImageIO.read(getClass().getResourceAsStream("/res/images/pullBeamUpRight.png"));
-			}catch (Exception e){e.printStackTrace();}
-		}
 		
-		float snapAngle =(float)(Math.PI/4);
-		float offset = (float)(Math.PI/8);
-		if(angle <= 3*-snapAngle + offset)
-		{
-			current = upLeft;
-		}
-		else if(angle <= 2*-snapAngle + offset)
-		{
-			current = up;
-		}
-		else if(angle <= -snapAngle + offset)
-		{
-			current = upRight;
-		}
-		else if(angle <= 0 + offset)
-		{
-			current = right;
-		}
-		else if(angle <= snapAngle + offset)
-		{
-			current = downRight;
-		}
-		else if(angle <= 2*snapAngle + offset)
-		{
-			current = down;
-		}
-		else if(angle <= 3*snapAngle + offset)
-		{
-			current = downLeft;
-		}
-		else if(angle <= 4*snapAngle + offset)
-		{
-			current = left;
-		}
-		width = current.getWidth(null);
-		height = current.getHeight(null);
+        this.updateAngle(angle);
 	}
 	public void draw()
 	{
 		graphics.drawImage(current, (int)x-5, (int)y-5, this);
 	}
-	public void logic()
+	public void logic(long delta)
 	{
-		x += (speed * Math.cos(angle));
-		y += (speed * Math.sin(angle));
+		x += (speed * Math.cos(angle)) * (delta > 30 ? 3 : 1);
+		y += (speed * Math.sin(angle)) * (delta > 30 ? 3 : 1);
 	}
 	public float getAngle(){
 		return angle;
@@ -108,35 +71,35 @@ public class Beam extends Component implements Entity {
 	}
 	public int getX()
 	{
-		if(current == up)
+		if(direction == "Up")
 		{
 			return (int) (x + width/2);
 		}
-		if(current == upRight)
+		if(direction == "UpRight")
 		{
 			return (int) (x + width);
 		}
-		if(current == right)
+		if(direction == "Right")
 		{
 			return (int) (x + width);
 		}
-		if(current == downRight)
+		if(direction == "DownRight")
 		{
 			return (int) (x + width);
 		}
-		if(current == down)
+		if(direction == "Down")
 		{
 			return (int) (x + width/2);
 		}
-		if(current == downLeft)
+		if(direction == "DownLeft")
 		{
 			return (int) x;
 		}
-		if(current == left)
+		if(direction == "Left")
 		{
 			return (int) x;
 		}
-		if(current == upLeft)
+		if(direction == "UpLeft")
 		{
 			return (int ) x;
 		}
@@ -144,35 +107,35 @@ public class Beam extends Component implements Entity {
 	}
 	public int getY()
 	{
-		if(current == up)
+		if(direction == "Up")
 		{
 			return (int) y;
 		}
-		if(current == upRight)
+		if(direction == "UpRight")
 		{
 			return (int) y;
 		}
-		if(current == right)
+		if(direction == "Right")
 		{
 			return (int) (y + height/2);
 		}
-		if(current == downRight)
+		if(direction == "DownRight")
 		{
 			return (int) (y + height);
 		}
-		if(current == down)
+		if(direction == "Down")
 		{
 			return (int) (y + height);
 		}
-		if(current == downLeft)
+		if(direction == "DownLeft")
 		{
 			return (int) (y + height);
 		}
-		if(current == left)
+		if(direction == "Left")
 		{
 			return (int) (y + height/2);
 		}
-		if(current == upLeft)
+		if(direction == "UpLeft")
 		{
 			return (int ) y;
 		}
@@ -186,6 +149,43 @@ public class Beam extends Component implements Entity {
 	{
 		lastId = id;
 	}
+
+    public Image getImage() {
+		if(direction == "UpLeft")
+		{
+			return push ? pushUpLeft : pullUpLeft;
+		}
+		else if(direction == "Up")
+		{
+			return push ? pushUp : pullUp;
+		}
+		else if(direction == "UpRight")
+		{
+			return push ? pushUpRight : pullUpRight;
+		}
+		else if(direction == "Right")
+		{
+			return push ? pushRight : pullRight;
+		}
+		else if(direction == "DownRight")
+		{
+			return push ? pushDownRight : pullDownRight;
+		}
+		else if(direction == "Down")
+		{
+			return push ? pushDown : pullDown;
+		}
+		else if(direction == "DownLeft")
+		{
+			return push ? pushDownLeft : pullDownLeft;
+		}
+		else if(direction == "Left")
+		{
+			return push ? pushLeft : pullLeft;
+		}
+        return null;
+    }
+
 	public void updateAngle(float angle)
 	{
 		this.angle = angle;
@@ -193,36 +193,37 @@ public class Beam extends Component implements Entity {
 		float offset = (float)(Math.PI/8);
 		if(angle <= 3*-snapAngle + offset)
 		{
-			current = upLeft;
+			direction = "UpLeft";
 		}
 		else if(angle <= 2*-snapAngle + offset)
 		{
-			current = up;
+			direction = "Up";
 		}
 		else if(angle <= -snapAngle + offset)
 		{
-			current = upRight;
+			direction = "UpRight";
 		}
 		else if(angle <= 0 + offset)
 		{
-			current = right;
+			direction = "Right";
 		}
 		else if(angle <= snapAngle + offset)
 		{
-			current = downRight;
+			direction = "DownRight";
 		}
 		else if(angle <= 2*snapAngle + offset)
 		{
-			current = down;
+			direction = "Down";
 		}
 		else if(angle <= 3*snapAngle + offset)
 		{
-			current = downLeft;
+			direction = "DownLeft";
 		}
 		else if(angle <= 4*snapAngle + offset)
 		{
-			current = left;
+			direction = "Left";
 		}
+        current = this.getImage();
 		width = current.getWidth(null);
 		height = current.getHeight(null);
 	}
@@ -236,39 +237,7 @@ public class Beam extends Component implements Entity {
 	}
 	public String getDirection()
 	{
-		if(current == up)
-		{
-			return "Up";
-		}
-		if(current == upRight)
-		{
-			return "UpRight";
-		}
-		if(current == right)
-		{
-			return "Right";
-		}
-		if(current == downRight)
-		{
-			return "DownRight";
-		}
-		if(current == down)
-		{
-			return "Down";
-		}
-		if(current == downLeft)
-		{
-			return "DownLeft";
-		}
-		if(current == left)
-		{
-			return "Left";
-		}
-		if(current == upLeft)
-		{
-			return "UpLeft";
-		}
-		return "none";
+        return direction;
 	}
 	@Override
 	public float getPreviousX() {

@@ -2,7 +2,7 @@ package com.logosstudios.GRANT;
 
 public interface Entity {
 	public void draw();
-	public void logic();
+	public void logic(long delta);
 	public int getX();
 	public int getY();
 	public float getPreviousX();

@@ -135,9 +135,9 @@ public class Level {
 			instructionBool = true;
 		}
 	}
-	public void logic() 
+	public void logic(long delta) 
 	{
-		ticks++;
+        ticks++;
 		if(beamFlow && ticks%2==0)
 		{
 			beams.add(new Beam(player.getX()+28, player.getY()+28, player.getAngle(), push, graphics));
@@ -148,30 +148,30 @@ public class Level {
 		}
 		for(int i = 0; i < walls.size(); i++)
 		{
-			walls.get(i).logic();
+			walls.get(i).logic(delta);
 		}
 		if(wallsSolid.size() > 0)
 		{
 			for(int i = 0; i < wallsSolid.size(); i++)
 			{
-				wallsSolid.get(i).logic();
+				wallsSolid.get(i).logic(delta);
 			}
 		}
 		for(int i = 0; i < buttons.size(); i++)
 		{
-			buttons.get(i).logic();
+			buttons.get(i).logic(delta);
 		}
 		for(int i = 0; i < boxes.size(); i++)
 		{
-			boxes.get(i).logic();
+			boxes.get(i).logic(delta);
 		}
 		for(int i = 0; i < switches.size(); i++)
 		{
-			switches.get(i).logic();
+			switches.get(i).logic(delta);
 		}
 		for(int i = 0; i < beams.size(); i++)
 		{
-			beams.get(i).logic();
+			beams.get(i).logic(delta);
 		}
 		for(int i = 0; i < buttons.size(); i++)
 		{

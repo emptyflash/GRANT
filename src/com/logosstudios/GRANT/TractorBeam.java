@@ -100,7 +100,10 @@ public class TractorBeam extends Applet implements Runnable, KeyListener, MouseL
 			logic(delta);
 			try
 			{
-				Thread.sleep(refreshRate - delta);
+                long sleepyTime = refreshRate - delta;
+                if (sleepyTime > 0) {
+                    Thread.sleep(refreshRate - delta);
+                }
 			}
 			catch(Exception e){}
 		}
@@ -108,7 +111,7 @@ public class TractorBeam extends Applet implements Runnable, KeyListener, MouseL
 	public void logic(long delta)
 	{	
 		player.logic(delta);
-		level.logic();
+		level.logic(delta);
 		if((player.getX()<0||player.getX()+64>width)||(player.getY()<0||player.getY()+64>height))
 		{
 			player.setXVel(0);

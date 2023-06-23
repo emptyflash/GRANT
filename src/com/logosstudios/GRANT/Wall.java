@@ -82,7 +82,7 @@ public class Wall extends Component implements Entity{
 		}
 	}
 
-	public void logic() {
+	public void logic(long delta) {
 		if(visible)
 		{
 			if((player.getX()+64>x&&player.getX()<x+width) && (player.getY()+64>y && player.getY() < y+height))

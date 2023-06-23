@@ -34,7 +34,7 @@ public class Box extends Component implements Entity {
 		graphics.drawImage(box, (int)x, (int)y, this);
 	}
 
-	public void logic() {
+	public void logic(long delta) {
 		if(move)
 		{
 			previousX = x;
@@ -46,8 +46,9 @@ public class Box extends Component implements Entity {
 			}
 			else
 			{
-				x -= speed/3 * Math.cos(angle);
-				y -= speed/3 * Math.sin(angle);
+                // TODO why does pulling move faster
+				x -= speed/4 * Math.cos(angle);
+				y -= speed/4 * Math.sin(angle);
 			}
 			move = false;
 		}

@@ -44,7 +44,7 @@ public class Door extends Component implements Entity {
 	}
 
 	@Override
-	public void logic() {
+	public void logic(long delta) {
 		// TODO Auto-generated method stub
 
 	}
