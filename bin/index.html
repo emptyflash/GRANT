@@ -4,20 +4,83 @@
     <meta charset="utf-8">
     <title>GRANT Device</title>
     <script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
-    <!--
-    <script>cheerpjInit({enablePreciseAppletArchives:true});</script>
-    -->
+    <script src="https://unpkg.com/hydra-synth"></script>
   </head>
   <body>
-    <!--
-    <cheerpj-applet archive="GRANT.jar" code="com.logosstudios.GRANT.TractorBeam" height="640" width="480">
-        <p>not able to load Java applet</p>
-    </cheerpj-applet>
-    -->
+      <style>
+        .text {
+            text-align: right;
+            background: white;
+            padding: 10px;
+            margin: 15px;
+        }
+        #hydraCanvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        #container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-items: center;
+        }
+      </style>
+      <div id="container">
+          <p class="text">
+          Dust off the bit rot<br/>
+          Hello old friend<br/>
+          Do you remember when<br/>
+          We were fresh and motivated<br/>
+          <br/>
+          Entropy and atrophy creeps in<br/>
+          The <a target="_blank" href="https://web.archive.org/web/20141211232748/http://ludumdare.com/compo/ludum-dare-20/?action=preview&uid=2457">archive</a> offers a glimpse of<br/>
+          Faded <a target="_blank" href="http://web.archive.org/web/20150903062354/http://www.logosstudios.net/blog/?page_id=93">ephemera</a> <br/>
+          <br/>
+          Our code stays the same<br/>
+          Our language doesn't change<br/>
+          Everything else does<br/>
+          <br/>
+          Fix final level       <a target="_blank" href="https://github.com/emptyflash/GRANT/tree/b43d1899e6e2c8ad8784f28156f790df142b9428">b162183</a><br/>
+          remove ignore bin     <a target="_blank" href="https://github.com/emptyflash/GRANT/tree/6fed6658e11e0b2f856c048e29405039f15db267">6fed665</a><br/>
+          Commit bin and jar    <a target="_blank" href="https://github.com/emptyflash/GRANT/tree/df986634a45f1873e1fb56ae26c76b80c6624c17">df98663</a><br/>
+          </p>
+      </div>
+      <canvas id="hydraCanvas"></canvas>
   </body>
   <script>
+    function waitForElement(selector) {
+        return new Promise(resolve => {
+            if (document.querySelector(selector)) {
+                return resolve(document.querySelector(selector));
+            }
+
+            const observer = new MutationObserver(mutations => {
+                if (document.querySelector(selector)) {
+                    resolve(document.querySelector(selector));
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    }
+    let container = document.getElementById("container");
     cheerpjInit();
-    cheerpjCreateDisplay(640,500);
+    cheerpjCreateDisplay(640, 480, container);
     cheerpjRunJar("GRANT.jar"); 
+    let hydraCanvas = document.getElementById("hydraCanvas");
+    let hydra = new Hydra({ canvas: hydraCanvas, detectAudio: false });
+    waitForElement("#cheerpjDisplay > div > div:nth-child(2) > div > canvas").then((canvas) => {
+        s0.init({src: canvas})
+        src(s0).mult(noise(2).brightness(.6)).blend(o0, [.3, .9].smooth()).rotate(.1,.1).modulateScale(noise(1)).kaleid(2).out()
+    })
+
   </script>
 </html>
